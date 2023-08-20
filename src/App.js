@@ -29,29 +29,28 @@ const router = createBrowserRouter([
         element: <Home/>,
       },
       {
-        path: "/login",
-        element: <Login/>,
+        path: "/single",
+        element: <Single/>,
       },
       {
         path: "/write",
         element: <Write/>,
       },
-      {
-        path: "/register",
-        element: <Register/>,
-      },
-      {
-        path: "/single",
-        element: <Single/>,
-      }
-
     ]
+  },
+  {
+    path: "/register",
+    element: <Register/>,
+  },
+  {
+    path: "/login",
+    element: <Login/>,
   },
 ]);
 
 const App = () => {
-  return <div className='App'>
-    <div className='Container'>
+  return <div className='app'>
+    <div className='container'>
       <RouterProvider router={router}></RouterProvider>
     </div>
   </div>
