@@ -40,7 +40,7 @@ const Home = ()=> {
                 <h1>{post.title}</h1>
               </Link>
               <p>{post.desc}</p>
-                <button>Read More</button>
+              <button>Read More</button>
             </div>
 
           </div>
