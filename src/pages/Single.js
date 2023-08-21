@@ -1,33 +1,54 @@
-import React  from "react";
+import React, {useState, useEffect, useContext}  from "react";
 import Edit from "../img/edit.png"
 import Delete from "../img/delete.png"
-import {Link} from "react-router-dom"
+import {Link, useLocation} from "react-router-dom"
 import Menu from "../components/Menu.js"
+import axios from "axios";
+import {AuthContext} from "../context/authcontext.js"
+import moment from "moment";
 
 const Single = ()=> {
+    const [post, setPost] = useState({});
+    const location = useLocation();
+    const postId = location.pathname.split("/")[2];
+    const {currentUser} = useContext(AuthContext);
+    console.log(post);
+    useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`/post/${postId}`);
+        if (res.data.code !== 200) {
+          console.log(res.data.message);
+        } else {
+          setPost(res.data.extentPack);
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, [postId]);
+
     return (<div className="single">
         <div className="content">
-            <img src="" alt=""></img>
-            <div className="user">
-                <img src="" alt=""></img>
+            <img src={post?.img} alt=""></img>
+            {JSON.stringify(post) !== "{}" && <div className="user">
+                <img src={post.user.img} alt=""/>
                 <div className="info">
-                    <span>John</span>
-                    <p>Posted 2 days ago</p>
+                    <span>{post.user.userName}</span>
+                    <p>Posted {moment(post.datetime).fromNow()}</p>
                 </div>
-                <div className="edit">
+                {currentUser != null && currentUser.extentPack.userName === post.user.userName && (<div className="edit">
                     <Link to="/write?edit=2">
                         <img src={Edit} alt=""></img>
                     </Link>
                     <Link>
                         <img src={Delete} alt=""></img>
                     </Link>                
-                </div>
-            </div>
-            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit
-            Lorem ipsum dolor sit amet consectetur adipisicing elit
-            Lorem ipsum dolor sit amet consectetur adipisicing elit
-            </p>
+                </div>)}
+            </div>}
+            <h1>{post?.title}</h1>
+            <p>{post?.desc}</p>
         </div>
         <Menu></Menu>
     </div>);
