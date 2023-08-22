@@ -40,7 +40,7 @@ const Navbar = ()=> {
                     </Link>
                 )}
                 <span className="write">
-                    <Link className="link" to="/write">Write</Link>
+                    {currentUser?<Link className="link" to="/write">Write</Link>: "Write"}
                 </span>
             </div>
         </div>
