@@ -6,7 +6,7 @@ import Menu from "../components/Menu.js"
 import axios from "axios";
 import {AuthContext} from "../context/authcontext.js"
 import moment from "moment";
-
+import DOMPurify from "dompurify";
 const Single = ()=> {
     const navigate = useNavigate();
     const [post, setPost] = useState({});
@@ -57,7 +57,9 @@ const Single = ()=> {
                 </div>)}
             </div>}
             <h1>{post?.title}</h1>
-            <p>{post?.desc}</p>
+            <p dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(post?.desc),
+          }}></p>
         </div>
         <Menu cat={post?.cat}></Menu>
     </div>);

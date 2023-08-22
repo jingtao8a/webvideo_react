@@ -1,7 +1,7 @@
 import React, {useEffect, useState}  from "react";
 import {Link, useLocation, useNavigate} from "react-router-dom"
 import axios from "axios";
-
+import DOMPurify from "dompurify";
 const Home = ()=> {
   const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
@@ -34,7 +34,9 @@ const Home = ()=> {
               <Link to={`/post/${post.id}`}>
                 <h1>{post.title}</h1>
               </Link>
-              <p>{post.desc}</p>
+              <p dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(post?.desc),
+          }}></p>
               <button onClick={(e)=> {
                 e.preventDefault();
                 navigate(`/post/${post.id}`);

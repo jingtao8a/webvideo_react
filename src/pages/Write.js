@@ -47,14 +47,14 @@ const Write = ()=> {
             if (state !== null) {
                 res = await axios.post(`/post/${state.id}`, {
                     title,
-                    desc: value.substring(3, value.length - 4),
+                    desc: value,
                     cat,
                     img: file ? imgURL: "",
                 });
             } else {
                 res = await axios.post(`/post`, {
                     title,
-                    desc: value.substring(3, value.length - 4),
+                    desc: value,
                     cat,
                     img: file ? imgURL : "",
                     date: moment(Date.now()).format("YYYY-MM-DD"),
