@@ -15,20 +15,20 @@ const Single = ()=> {
     const {currentUser} = useContext(AuthContext);
     console.log(post);
     useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`/post/${postId}`);
-        if (res.data.code !== 200) {
-          console.log(res.data.message);
-        } else {
-          setPost(res.data.extentPack);
+      const fetchData = async () => {
+        try {
+          const res = await axios.get(`/post/${postId}`);
+          if (res.data.code !== 200) {
+            console.log(res.data.message);
+          } else {
+            setPost(res.data.extentPack);
+          }
+        } catch (err) {
+          console.log(err);
         }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
-  }, [postId]);
+      };
+      fetchData();
+    }, [postId]);
 
   const handleDelete = async() => {
     try {
@@ -45,10 +45,10 @@ const Single = ()=> {
                 <img src={post.user.img} alt=""/>
                 <div className="info">
                     <span>{post.user.userName}</span>
-                    <p>Posted {moment(post.datetime).fromNow()}</p>
+                    <p>Posted {moment(post.date).fromNow()}</p>
                 </div>
                 {currentUser != null && currentUser.extentPack.userName === post.user.userName && (<div className="edit">
-                    <Link to="/write?edit=2">
+                    <Link to="/write?edit=2" state={post}>
                         <img src={Edit} alt=""></img>
                     </Link>
                     <Link>
