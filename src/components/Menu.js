@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const Menu = ({cat})=> {
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -25,7 +27,10 @@ const Menu = ({cat})=> {
             return <div className="post" key={post.id}>
                 <img src={post.img} alt=""></img>
                 <h2>{post.title}</h2>
-                <button>Read More</button>
+                <button onClick={(e)=> {
+                e.preventDefault();
+                navigate(`/post/${post.id}`);
+              }}>Read More</button>
             </div>;
         })}
     </div>);
