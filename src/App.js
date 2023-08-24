@@ -8,6 +8,7 @@ import Login from './pages/Login.js'
 import Write from './pages/Write.js'
 import Register from './pages/Register.js'
 import Single from './pages/Single.js'
+import Video from './pages/Video.js'
 import Home from './pages/Home.js'
 import Footer from './components/Footer.js'
 import Navbar from './components/Navbar.js'
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
         path: "/write",
         element: <Write/>,
       },
+      {
+        path: "/video",
+        element: <Video/>,
+      }
     ]
   },
   {
