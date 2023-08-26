@@ -1,10 +1,12 @@
-import axios from 'axios';
-import React, {useState, useEffect, useRef} from 'react';
+import {useLocation} from "react-router-dom"
+import React from 'react';
 import videojs from 'video.js';
 import 'video.js/dist/video-js.css';
 const Video = ()=> {
-  const path = "/video?videoPath=VID_20230211_151132.mp4"
-  // const path = "/video?videoPath=dir2/VID_20230123_164414.mp4";
+  const videoPath = useLocation().search;
+  const path = "/video" + videoPath;
+  console.log(path);
+//   const path = "/video?videoPath=dir2/VID_20230123_164414.mp4";
     // const path = "/video?videoPath=dir1/VID_20230109_132811.mp4";
     // const path = "/video/dir1/VID_20230109_132811/VID_20230109_132811.m3u8";
     return (
