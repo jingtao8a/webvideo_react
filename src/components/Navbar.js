@@ -31,7 +31,7 @@ const Navbar = ()=> {
                 <Link className="link" to="/?cat=cinema">
                     <h6>CINEMA</h6>
                 </Link>
-                <Link className="link" to="/video">
+                <Link className="link" to="/videoContainer">
                     <h6>VIDEO</h6>
                 </Link>
                 <span>{currentUser?currentUser.extentPack.userName:null}</span>
