@@ -2,7 +2,7 @@
   "name": "webvideo-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://192.168.0.167:8080",
+  "proxy": "http://192.168.0.168:8080",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -10,16 +10,18 @@
     "antd": "^5.8.4",
     "axios": "^1.4.0",
     "dompurify": "^3.0.5",
+    "hls.js": "^1.4.10",
     "moment": "^2.29.4",
     "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-player": "^2.12.0",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.15.0",
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
-    "video-react": "^0.16.0",
     "video.js": "^8.5.2",
+    "videojs-contrib-hls": "^5.15.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -45,5 +47,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }

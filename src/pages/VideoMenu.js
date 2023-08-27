@@ -5,9 +5,6 @@ import {
 } from '@ant-design/icons';
 import {Menu, Switch } from 'antd';
 
-
-
-
 const getItem = (label, key, icon, children)=> {
   return {
     key,
@@ -50,6 +47,7 @@ const VideoMenu = ({directoryStructure, changePath, changePreviewFiles}) => {
     let rootDir = directoryStructure;
     for (let i = e.keyPath.length - 1; i >= 0; --i) {
       let flag = false;
+      // eslint-disable-next-line
       rootDir.map((item)=> {
         if (item.name === e.keyPath[i]) { 
           findDir = item;

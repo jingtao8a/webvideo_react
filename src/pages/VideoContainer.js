@@ -2,40 +2,10 @@ import React, { useEffect, useState } from 'react';
 import VideoMenu from './VideoMenu';
 import VideoPreview from './VideoPreview.js'
 import axios from 'axios';
-// const directoryStructure = [
-//     {
-//       name: 'Folder 1',
-//       children: [
-//         {
-//           name: 'Subfolder 1.1',
-//           children: [
-//             { name: 'Subfolder 1.1.1', children: [], file: [] },
-//             { name: 'Subfolder 1.1.2', children: [], file: [] },
-//           ],
-//           file: ['4.txt']
-//         },
-//         { name: 'Subfolder 1.2', children: [], file: [] },
-//       ],
-//       file: ['1.txt'],
-//     },
-//     {
-//       name: 'Folder 2',
-//       children: [
-//         {
-//           name: 'Subfolder 2.1',
-//           children: [
-//             { name: 'Subfolder 2.1.1', children: [], file: [] },
-//             { name: 'Subfolder 2.1.2', children: [], file: [] },
-//           ],
-//           file: []
-//         },
-//         { name: 'Subfolder 2.2', children: [], file: [] },
-//       ],
-//       file: ['2.txt', '3.txt'],
-//     },
-//   ];
+import Video from './Video.js'
 
 const VideoContainer = () => {
+    const [m3u8Path, setM3u8Path] = useState('');
     const [path, setPath] = useState('');
     const [previewFiles, setPreviewFiles] = useState([]);
     const [directoryStructure, setDirectoryStructure] = useState(null);
@@ -67,7 +37,8 @@ const VideoContainer = () => {
         <VideoMenu directoryStructure={directoryStructure} 
         changePath={changePath} 
         changePreviewFiles={changePreviewFiles}></VideoMenu>
-        <VideoPreview path={path} previewFiles={previewFiles}></VideoPreview>
+        <VideoPreview path={path} previewFiles={previewFiles} setM3u8Path={setM3u8Path}></VideoPreview>
+        <Video path={m3u8Path}></Video>
     </div>
     );
 };

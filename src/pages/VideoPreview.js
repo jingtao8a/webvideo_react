@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import {Link, useNavigate} from "react-router-dom"
+import {Link} from "react-router-dom"
 import { Pagination } from 'antd';
 import axios from 'axios';
 
-const VideoPreview =  ({path, previewFiles}) => {
-    const navigate = useNavigate();
+const VideoPreview =  ({path, previewFiles, setM3u8Path}) => {
     const [pagination, setPagination] = useState({
         current: 1,
         defaultPageSize: 10,
@@ -14,8 +13,6 @@ const VideoPreview =  ({path, previewFiles}) => {
         setPagination({...pagination, current: page});
     };
 
-
-    
     const showFile = ()=> {
         let index = (pagination.current - 1) * pagination.defaultPageSize;
         let range;
@@ -29,7 +26,6 @@ const VideoPreview =  ({path, previewFiles}) => {
             files.push(previewFiles[index + i]);
         }
         return files.map(item => {
-            let m3u8Path;
             const handleClick = (e)=> {
                 e.preventDefault();
                 let videoPath = encodeURIComponent(path + item);
@@ -40,8 +36,8 @@ const VideoPreview =  ({path, previewFiles}) => {
                       if (res.data.code !== 200) {
                         console.log(res.data.message);
                       } else {
-                        m3u8Path = res.data.extentPack;
-                        navigate("/video?videoPath=" + m3u8Path);
+                        let m3u8Path = res.data.extentPack;
+                        setM3u8Path(m3u8Path);
                     }
                     } catch (err) {
                       console.log(err);

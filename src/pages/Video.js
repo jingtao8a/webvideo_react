@@ -1,22 +1,15 @@
-import {useLocation} from "react-router-dom"
 import React from 'react';
-import videojs from 'video.js';
-import 'video.js/dist/video-js.css';
-const Video = ()=> {
-    let videoPath = useLocation().search;
-    videoPath = videoPath.substring(videoPath.indexOf("=") + 1);
-    videoPath = decodeURIComponent(videoPath);//可以删除这一行
-    console.log(videoPath);
-//   const path = "/video?videoPath=dir2/VID_20230123_164414.mp4";
-    // const path = "/video?videoPath=dir1/VID_20230109_132811.mp4";
-    // const path = "/video/dir1/VID_20230109_132811/VID_20230109_132811.m3u8";
+import ReactPlayer from 'react-player';
+
+const Video = ({path})=> {
+    console.log(path);
+    if (path === '' || path == null) {
+        return <div></div>;
+    }
     return (
         <div className="video">
-            <video id="myVideo" class="video-js vjs-default-skin vjs-big-play-centered" muted controls autoplay  preload="auto" width="500" height="400" data-setup='{}'>      
-                <source id="source" src={videoPath}  type="application/x-mpegURL"/>
-            </video>
+            <ReactPlayer url={path} controls={true}></ReactPlayer>
         </div>);
-    
 };
 
 
