@@ -375,32 +375,28 @@ $lightGreen: #b9e7e7;
       }
     }
 
-    //VIDEO
-    .video {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      .video-react {
-        width: 100%; /* 设置宽度为父容器的100% */
-        max-width: 500px; /* 设置最大宽度，以限制播放器的宽度 */
-        max-height: 350px;
-      }
-    }
+    
 
     //VIDEOCONTAINER
     .videoContainer {
       display: flex;
       flex-direction: row;
       justify-content: center;
-      align-items: center;
+      // align-items: center;
       //VIDEOMENU
       .videoMenu {
         flex: 2;
       }
-
-      //VIDEOPREVIEW
-      .videoPreview {
+      .preViewAndVideo {
         flex: 5;
+        display: flex;
+        flex-direction: column;
+        //VIDEOPREVIEW
+        // .videoPreview {
+        // }
+        //VIDEO
+        // .video {
+        // }
       }
     }
   }

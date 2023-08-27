@@ -37,8 +37,10 @@ const VideoContainer = () => {
         <VideoMenu directoryStructure={directoryStructure} 
         changePath={changePath} 
         changePreviewFiles={changePreviewFiles}></VideoMenu>
-        <VideoPreview path={path} previewFiles={previewFiles} setM3u8Path={setM3u8Path}></VideoPreview>
-        <Video path={m3u8Path}></Video>
+        <div className='preViewAndVideo'>
+          <VideoPreview path={path} previewFiles={previewFiles} setM3u8Path={setM3u8Path}></VideoPreview>
+          <Video path={m3u8Path}></Video>
+        </div>
     </div>
     );
 };
