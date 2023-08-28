@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import {Link} from "react-router-dom"
 import { Pagination } from 'antd';
 import axios from 'axios';
+import {Spin } from 'antd';
 
-const VideoPreview =  ({path, previewFiles, setM3u8Path, setLoading}) => {
+const VideoPreview =  ({path, previewFiles, setM3u8Path}) => {
     const [pagination, setPagination] = useState({
         current: 1,
         defaultPageSize: 10,
     });
-    console.log(pagination.current);
+    const [loading, setLoading] = useState(false);
+
     const handleChange = (page, pageSize) => {
         setPagination({...pagination, current: page});
     };
@@ -38,12 +40,12 @@ const VideoPreview =  ({path, previewFiles, setM3u8Path, setLoading}) => {
                         console.log(res.data.message);
                       } else {
                         let m3u8Path = res.data.extentPack;
+                        setLoading(false);
                         setM3u8Path(m3u8Path);
                       }
                     } catch (err) {
                       console.log(err);
                     }
-                    setLoading(false);
                   };
                   fetchData();
             };
@@ -63,6 +65,7 @@ const VideoPreview =  ({path, previewFiles, setM3u8Path, setLoading}) => {
             defaultPageSize={pagination.defaultPageSize} 
             total={previewFiles.length}>
         </Pagination>
+        {loading ? <div className='spin'><p>video is loading</p><Spin size="large"></Spin></div>: <div></div>}
     </div>
     );
 }

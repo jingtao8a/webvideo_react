@@ -399,18 +399,17 @@ $lightGreen: #b9e7e7;
           p.path {
             color: teal;
           }
-        }
-        //SPIN
-        .spin{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 150px;
-          p {
-            font-size: 20px;
-            color: teal;
-            margin-bottom: 20px;
-            text-align: center;
+          .spin{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 150px;
+            p {
+              font-size: 20px;
+              color: teal;
+              margin-bottom: 20px;
+              text-align: center;
+            }
           }
         }
         //VIDEO

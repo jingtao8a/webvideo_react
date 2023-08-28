@@ -3,13 +3,11 @@ import VideoMenu from './VideoMenu';
 import VideoPreview from './VideoPreview.js'
 import axios from 'axios';
 import Video from './Video.js'
-import {Spin } from 'antd';
 
 const VideoContainer = () => {
     const [m3u8Path, setM3u8Path] = useState('');
     const [path, setPath] = useState('');
     const [previewFiles, setPreviewFiles] = useState([]);
-    const [loading, setLoading] = useState(false);
     const [directoryStructure, setDirectoryStructure] = useState(null);
 
     useEffect(()=> {
@@ -34,8 +32,7 @@ const VideoContainer = () => {
         setPath={setPath} 
         setPreviewFiles={setPreviewFiles}></VideoMenu>
         <div className='preViewAndVideo'>
-          <VideoPreview path={path} previewFiles={previewFiles} setM3u8Path={setM3u8Path} setLoading={setLoading}></VideoPreview>
-          {loading ? <div className='spin'><p>video is loading</p><Spin size="large"></Spin></div>: <div></div>}
+          <VideoPreview path={path} previewFiles={previewFiles} setM3u8Path={setM3u8Path}></VideoPreview>
           <Video path={m3u8Path}></Video>
         </div>
     </div>
