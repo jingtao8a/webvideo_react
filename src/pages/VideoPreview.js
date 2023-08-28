@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 import { Pagination } from 'antd';
 import axios from 'axios';
 
-const VideoPreview =  ({path, previewFiles, setM3u8Path}) => {
+const VideoPreview =  ({path, previewFiles, setM3u8Path, setLoading}) => {
     const [pagination, setPagination] = useState({
         current: 1,
         defaultPageSize: 10,
@@ -31,6 +31,7 @@ const VideoPreview =  ({path, previewFiles, setM3u8Path}) => {
                 let videoPath = encodeURIComponent(path + item);
                 videoPath = "/video?videoPath=" + videoPath;
                 const fetchData = async () => {
+                    setLoading(true);
                     try {
                       const res = await axios.get(videoPath);
                       if (res.data.code !== 200) {
@@ -38,10 +39,11 @@ const VideoPreview =  ({path, previewFiles, setM3u8Path}) => {
                       } else {
                         let m3u8Path = res.data.extentPack;
                         setM3u8Path(m3u8Path);
-                    }
+                      }
                     } catch (err) {
                       console.log(err);
                     }
+                    setLoading(false);
                   };
                   fetchData();
             };
@@ -51,7 +53,7 @@ const VideoPreview =  ({path, previewFiles, setM3u8Path}) => {
     
     return (
     <div className='videoPreview'>
-        {path}
+        <p className='path'>{path}</p>
         {
             showFile()
         }

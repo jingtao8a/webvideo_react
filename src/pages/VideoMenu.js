@@ -34,7 +34,7 @@ const getItems = (data) => {
 };
 
 
-const VideoMenu = ({directoryStructure, changePath, changePreviewFiles}) => {
+const VideoMenu = ({directoryStructure, setPath, setPreviewFiles}) => {
   const [theme, setTheme] = useState('light');
   const changeTheme = (value) => {
     setTheme(value ? 'dark' : 'light');
@@ -62,8 +62,8 @@ const VideoMenu = ({directoryStructure, changePath, changePreviewFiles}) => {
       }
       str = str.concat(e.keyPath[i] + '/');
     }
-    changePath(str);
-    changePreviewFiles(findDir.file);
+    setPath(str);
+    setPreviewFiles(findDir.file);
   }
   return (
     <div className='videoMenu'>
