@@ -32,5 +32,5 @@
 
 ***
 
-- 后端项目地址:[webvideo](https://github.com/jingtao8a/webvideo/tree/webvideo?tab=readme-ov-file) 分支webvideo
+- 后端项目地址:[webvideo](https://github.com/jingtao8a/webvideo/tree/webvideo?tab=readme-ov-file)
 - 前端项目参考视频:[使用React构建博客应用程序](https://www.bilibili.com/video/BV1Zg411Y7fb/?spm_id_from=333.337.search-card.all.click&vd_source=1c0783715047ed7b57030c61edf89d7b)
