@@ -1,5 +1,5 @@
 import {
-  createBrowserRouter,
+  createHashRouter,
   RouterProvider,
   // Route,
   Outlet,
@@ -12,6 +12,7 @@ import Home from './pages/Home.js'
 import Footer from './components/Footer.js'
 import Navbar from './components/Navbar.js'
 import "./style.scss"
+import VideoContainer from './pages/VideoContainer.js'
 
 const Layout = ()=> {
   return (
@@ -19,7 +20,7 @@ const Layout = ()=> {
     );
 };
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/", 
     element: <Layout/>,
@@ -36,6 +37,14 @@ const router = createBrowserRouter([
         path: "/write",
         element: <Write/>,
       },
+      {
+        path: "/videoContainer",
+        element: <VideoContainer/>,
+      },
+      // {
+      //   path: "/video",
+      //   element:<Video/>,
+      // }
     ]
   },
   {
